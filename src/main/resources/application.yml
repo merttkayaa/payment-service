@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: payment-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/payment_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: none
+
+
+feign:
+  client:
+    xbank:
+      name: "xbank"
+      url: "http://localhost:9001"
+      path:
+        nonsecure: "/nonsecure"
+        threeD: "/threeD"
+    ybank:
+      name: "ybank"
+      url: "http://localhost:9002"
+      path-nonsecure: "/nonsecure"
+      path-threeD: "/threeD"
