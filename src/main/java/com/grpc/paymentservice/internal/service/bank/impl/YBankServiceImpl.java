@@ -1,4 +1,4 @@
-package com.grpc.paymentservice.internal.service.impl;
+package com.grpc.paymentservice.internal.service.bank.impl;
 
 
 import com.grpc.paymentservice.external.client.YBankServiceClient;
@@ -6,7 +6,7 @@ import com.grpc.paymentservice.external.dto.ybank.request.PayRequest;
 import com.grpc.paymentservice.internal.dto.PaymentResponse;
 import com.grpc.paymentservice.internal.dto.enums.PaymentType;
 import com.grpc.paymentservice.internal.mapper.YBankMapper;
-import com.grpc.paymentservice.internal.service.BankService;
+import com.grpc.paymentservice.internal.service.bank.BankService;
 import grpc.paymentservice.PaymentServiceOuterClass;
 import org.springframework.stereotype.Service;
 
@@ -36,13 +36,11 @@ public class YBankServiceImpl implements BankService {
                 .amount(BigDecimal.valueOf(Long.parseLong(createPayment.getAmount())))
                 .build();
 
-//        if(isThreeD){
-//            return mapper.toPayment(client.payThreeD(request));
-//        }else{
-//            return  mapper.toPayment(client.payNonSecure(request));
-//        }
-
-        return null;
+        if(isThreeD){
+            return mapper.toPaymentResponse(client.payThreeD(request));
+        }else{
+            return  mapper.toPaymentResponse(client.payNonSecure(request));
+        }
 
     }
 }

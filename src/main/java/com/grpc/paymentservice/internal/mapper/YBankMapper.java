@@ -7,8 +7,14 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
-public interface YBankMapper {
+public abstract class YBankMapper {
     YBankMapper INSTANCE = Mappers.getMapper(YBankMapper.class);
-//    @Mapping(source = "originalOrderId", target = "orderId")
-    PaymentResponse toPaymentResponse(YBankAuthResponse yBankAuthResponse);
+    public  PaymentResponse toPaymentResponse(YBankAuthResponse yBankAuthResponse){
+        return PaymentResponse.builder()
+                .orderId(yBankAuthResponse.getOriginalOrderId())
+                .response(yBankAuthResponse.getResponse())
+                .message(yBankAuthResponse.getMessage())
+                .isThreeD(yBankAuthResponse.isThreeD())
+                .build();
+    }
 }

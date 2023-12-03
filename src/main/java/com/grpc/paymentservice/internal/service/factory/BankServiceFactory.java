@@ -1,8 +1,8 @@
-package com.grpc.paymentservice.internal.service;
+package com.grpc.paymentservice.internal.service.factory;
 
 import com.grpc.paymentservice.internal.dto.PaymentResponse;
-import com.grpc.paymentservice.internal.service.impl.XBankServiceImpl;
-import com.grpc.paymentservice.internal.service.impl.YBankServiceImpl;
+import com.grpc.paymentservice.internal.service.bank.impl.XBankServiceImpl;
+import com.grpc.paymentservice.internal.service.bank.impl.YBankServiceImpl;
 import grpc.paymentservice.PaymentServiceOuterClass;
 import org.springframework.stereotype.Service;
 

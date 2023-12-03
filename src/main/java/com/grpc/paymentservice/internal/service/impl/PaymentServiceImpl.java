@@ -1,8 +1,7 @@
-package com.grpc.paymentservice.service;
+package com.grpc.paymentservice.internal.service.impl;
 
 import com.grpc.paymentservice.internal.dto.PaymentResponse;
-import com.grpc.paymentservice.internal.service.BankService;
-import com.grpc.paymentservice.internal.service.BankServiceFactory;
+import com.grpc.paymentservice.internal.service.factory.BankServiceFactory;
 import grpc.paymentservice.PaymentServiceGrpc;
 import grpc.paymentservice.PaymentServiceOuterClass;
 import io.grpc.stub.StreamObserver;
