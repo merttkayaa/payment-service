@@ -1,4 +1,4 @@
-package com.grpc.paymentservice.external.dto.request;
+package com.grpc.paymentservice.external.dto;
 import lombok.Getter;
 
 @Getter

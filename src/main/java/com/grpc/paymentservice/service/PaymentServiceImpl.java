@@ -17,6 +17,7 @@ public class PaymentServiceImpl extends PaymentServiceGrpc.PaymentServiceImplBas
     @Override
     public void pay(PaymentServiceOuterClass.CreatePayment request, StreamObserver<PaymentServiceOuterClass.PaymentDto> responseObserver){
         PaymentResponse paymentResponse = factory.getService(request);
+
         if("0000".equals(paymentResponse.getResponse())){
             PaymentServiceOuterClass.PaymentDto response = PaymentServiceOuterClass.PaymentDto.newBuilder()
                     .setResponse(paymentResponse.getResponse())
@@ -31,6 +32,7 @@ public class PaymentServiceImpl extends PaymentServiceGrpc.PaymentServiceImplBas
                     .setMessage("Fail")
                     .setOrderId(paymentResponse.getOrderId())
                     .build();
+
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         }
