@@ -26,5 +26,5 @@ feign:
     ybank:
       name: "ybank"
       url: "http://localhost:9002"
-      path-nonsecure: "/nonsecure"
-      path-threeD: "/threeD"
+      path-nonsecure: "/auth"
+      path-threeD: "/threeDPay"

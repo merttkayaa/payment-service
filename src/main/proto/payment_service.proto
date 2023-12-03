@@ -4,13 +4,15 @@ package grpc.paymentservice;
 
 
 message CreatePayment {
-  string cardNumber = 1;
-  string cvv = 2;
-  string expireDate = 3;
-  string amount = 4;
-  string bankId = 5;
-  string userId = 6;
-  string paymentMethod = 7;
+  string firstName = 1;
+  string lastName = 2;
+  string cardNumber = 3;
+  string cvv = 4;
+  string expireDate = 5;
+  string amount = 6;
+  string bankId = 7;
+  string userId = 8;
+  string paymentMethod = 9;
 }
 
 message PaymentDto {

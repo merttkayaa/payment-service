@@ -1,7 +1,7 @@
 package com.grpc.paymentservice.external.client;
 
-import com.grpc.paymentservice.external.dto.request.AuthRequest;
-import com.grpc.paymentservice.external.dto.XBankAuthResponse;
+import com.grpc.paymentservice.external.dto.xbank.request.AuthRequest;
+import com.grpc.paymentservice.external.dto.xbank.XBankAuthResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 
