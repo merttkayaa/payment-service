@@ -1,5 +1,6 @@
 package com.grpc.paymentservice.config;
 
+import com.grpc.paymentservice.internal.data.mapper.PaymentMapper;
 import com.grpc.paymentservice.internal.mapper.XBankMapper;
 import com.grpc.paymentservice.internal.mapper.YBankMapper;
 import org.mapstruct.factory.Mappers;
@@ -12,10 +13,12 @@ public class MapStructConfig {
     public XBankMapper xBankMapper() {
         return Mappers.getMapper(XBankMapper.class);
     }
-
     @Bean
     public YBankMapper yBankMapper() {
         return Mappers.getMapper(YBankMapper.class);
     }
-
+    @Bean
+    public PaymentMapper paymentMapperMapper() {
+        return Mappers.getMapper(PaymentMapper.class);
+    }
 }

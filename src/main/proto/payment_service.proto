@@ -11,7 +11,7 @@ message CreatePayment {
   string expireDate = 5;
   string amount = 6;
   string bankId = 7;
-  string userId = 8;
+  int64 userId = 8;
   string paymentMethod = 9;
 }
 
