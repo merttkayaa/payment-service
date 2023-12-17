@@ -2,6 +2,7 @@ package com.grpc.paymentservice.internal.service.bank.impl;
 
 
 import com.grpc.paymentservice.external.client.YBankServiceClient;
+import com.grpc.paymentservice.external.dto.xbank.request.InquireOrder;
 import com.grpc.paymentservice.external.dto.ybank.request.PayRequest;
 import com.grpc.paymentservice.internal.dto.PaymentResponse;
 import com.grpc.paymentservice.internal.dto.enums.PaymentType;
@@ -42,5 +43,10 @@ public class YBankServiceImpl implements BankService {
             return  mapper.toPaymentResponse(client.payNonSecure(request));
         }
 
+    }
+
+    @Override
+    public void inquireOrder(InquireOrder inquireOrder) {
+//        client.inquireOrder(inquireOrder);
     }
 }

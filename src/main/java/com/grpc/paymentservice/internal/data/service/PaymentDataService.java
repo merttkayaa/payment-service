@@ -21,4 +21,11 @@ public class PaymentDataService {
     public UUID createPaymentAndGetId(PaymentServiceOuterClass.CreatePayment createPayment){
        return  repository.save(mapper.map(createPayment)).getGuid();
     }
+
+    public Payment getPaymentById(UUID message) {
+        return repository.findById(message)
+                .orElse(null);
+        // Else de throw atmak lazım
+        // Global exception yapılınca yap bunu
+    }
 }

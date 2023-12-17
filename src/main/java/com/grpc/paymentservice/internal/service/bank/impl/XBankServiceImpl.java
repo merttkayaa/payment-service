@@ -2,6 +2,7 @@ package com.grpc.paymentservice.internal.service.bank.impl;
 
 import com.grpc.paymentservice.external.client.XBankServiceClient;
 import com.grpc.paymentservice.external.dto.xbank.request.AuthRequest;
+import com.grpc.paymentservice.external.dto.xbank.request.InquireOrder;
 import com.grpc.paymentservice.internal.dto.PaymentResponse;
 import com.grpc.paymentservice.internal.dto.enums.PaymentType;
 import com.grpc.paymentservice.internal.mapper.XBankMapper;
@@ -40,5 +41,10 @@ public class XBankServiceImpl implements BankService {
         }else{
            return  mapper.toPayment(client.payNonSecure(request));
         }
+    }
+
+    @Override
+    public void inquireOrder(InquireOrder inquireOrder) {
+//        client.inquireOrder(inquireOrder);
     }
 }

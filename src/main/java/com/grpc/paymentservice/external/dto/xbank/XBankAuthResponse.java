@@ -4,7 +4,7 @@ import lombok.Getter;
 @Getter
 public class XBankAuthResponse {
     private String orderId;
-    private String response;
+    private String responseCode;
     private String message;
     private boolean isThreeD;
 }

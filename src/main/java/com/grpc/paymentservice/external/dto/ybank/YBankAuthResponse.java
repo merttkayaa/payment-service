@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class YBankAuthResponse {
     private String originalOrderId;
-    private String response;
+    private String responseCode;
     private String message;
     private boolean isThreeD;
 }

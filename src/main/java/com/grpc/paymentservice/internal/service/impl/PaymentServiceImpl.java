@@ -25,11 +25,17 @@ public class PaymentServiceImpl extends PaymentServiceGrpc.PaymentServiceImplBas
         // TODO Gelen isteği dbye kayıt at, orderId yi dön response olarak
         UUID orderId = dataService.createPaymentAndGetId(request);
 
-        PaymentResponse paymentResponse = factory.getService(request);
+        PaymentResponse paymentResponse = factory.makePayment(request);
 
         if("0000".equals(paymentResponse.getResponse())){
+            // TODO yukarıda kayıt ettiğin işlemi başarılı olarak güncelle,  gelen orderIdyi tabloya kaydet
+
             //TODO kuyruğa at  kuyrukta ilgili bankanın inquireOrder fonksşyonunu çağır. Olumsuz olursa dbdeki başarılı kaydı güncelle
-            // Başarılı olunca gelen orderIdyi tabloya kaydet
+            // kuyruga sadece orderId yi at
+
+
+
+
             // TODO scheduled ile endDate fonksiyonunu kullanarak her gün belli bir saatte tüm transactionları sorgula eğer hata varsa db tablosundaki başarılı kaydı güncelle
             PaymentServiceOuterClass.PaymentDto response = PaymentServiceOuterClass.PaymentDto.newBuilder()
                     .setResponse(paymentResponse.getResponse())

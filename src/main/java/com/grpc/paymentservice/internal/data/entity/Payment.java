@@ -31,5 +31,7 @@ public class Payment {
     private String bankId;
     private Long userId;
     @Enumerated(EnumType.STRING)
-    private PaymentType paymentMethod_;
+    private PaymentType paymentMethod;
+    private String responseCode;
+    private String responseMessage;
 }
