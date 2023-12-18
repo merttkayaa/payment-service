@@ -1,6 +1,7 @@
 package com.grpc.paymentservice.internal.consumer;
 
 
+import com.grpc.paymentservice.external.dto.xbank.OrderResponse;
 import com.grpc.paymentservice.external.dto.xbank.request.InquireOrder;
 import com.grpc.paymentservice.internal.data.entity.Payment;
 import com.grpc.paymentservice.internal.data.service.PaymentDataService;
@@ -21,16 +22,9 @@ public class PaymentConsumer {
     }
 
     @RabbitListener(queues = "payment")
-    public void consumeMessage(UUID message) {
-        Payment existingEntity = dataService.getPaymentById(message);
-        InquireOrder inquireOrder = InquireOrder.builder()
-                .orderId(existingEntity.getOrderId())
-                .bankId(existingEntity.getBankId())
-                .paymentMethod(existingEntity.getPaymentMethod().getDescription())
-                .build();
-
-        factory.inquireOrder(inquireOrder);
-        //TODO ResponseDto objesine göre işlemleri tamamla
-
+    public void consumeMessage(InquireOrder message) {
+        OrderResponse inquireResponse = factory.inquireOrder(message);
+        if(!"00".equals(inquireResponse.getResponseCode()))
+            dataService.updateFailedPayment(inquireResponse);
     }
 }

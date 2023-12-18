@@ -8,5 +8,4 @@ import lombok.*;
 public class InquireOrder {
     private String orderId;
     private String bankId;
-    private String paymentMethod;
 }

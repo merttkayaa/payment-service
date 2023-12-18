@@ -1,6 +1,7 @@
 package com.grpc.paymentservice.internal.data.mapper;
 
 import com.grpc.paymentservice.internal.data.entity.Payment;
+import com.grpc.paymentservice.internal.dto.PaymentDto;
 import com.grpc.paymentservice.internal.mapper.XBankMapper;
 import grpc.paymentservice.PaymentServiceOuterClass;
 import org.mapstruct.BeanMapping;
@@ -14,4 +15,6 @@ public interface PaymentMapper {
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     Payment map(PaymentServiceOuterClass.CreatePayment createPayment);
+
+    PaymentDto toDto(Payment payment);
 }

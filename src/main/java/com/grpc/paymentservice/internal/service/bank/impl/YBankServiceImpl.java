@@ -2,16 +2,19 @@ package com.grpc.paymentservice.internal.service.bank.impl;
 
 
 import com.grpc.paymentservice.external.client.YBankServiceClient;
+import com.grpc.paymentservice.external.dto.xbank.OrderResponse;
 import com.grpc.paymentservice.external.dto.xbank.request.InquireOrder;
 import com.grpc.paymentservice.external.dto.ybank.request.PayRequest;
 import com.grpc.paymentservice.internal.dto.PaymentResponse;
 import com.grpc.paymentservice.internal.dto.enums.PaymentType;
+import com.grpc.paymentservice.internal.exception.NotFoundException;
 import com.grpc.paymentservice.internal.mapper.YBankMapper;
 import com.grpc.paymentservice.internal.service.bank.BankService;
 import grpc.paymentservice.PaymentServiceOuterClass;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 @Service
 public class YBankServiceImpl implements BankService {
@@ -46,7 +49,8 @@ public class YBankServiceImpl implements BankService {
     }
 
     @Override
-    public void inquireOrder(InquireOrder inquireOrder) {
-//        client.inquireOrder(inquireOrder);
+    public OrderResponse inquireOrder(InquireOrder inquireOrder) {
+        return Optional.ofNullable(client.inquireOrder(inquireOrder.getOrderId()))
+                .orElseThrow(() -> new NotFoundException("Payment with ID: " + inquireOrder.getOrderId() + " not found"));
     }
 }

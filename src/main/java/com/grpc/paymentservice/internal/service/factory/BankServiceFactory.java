@@ -1,7 +1,9 @@
 package com.grpc.paymentservice.internal.service.factory;
 
+import com.grpc.paymentservice.external.dto.xbank.OrderResponse;
 import com.grpc.paymentservice.external.dto.xbank.request.InquireOrder;
 import com.grpc.paymentservice.internal.dto.PaymentResponse;
+import com.grpc.paymentservice.internal.exception.NotFoundException;
 import com.grpc.paymentservice.internal.service.bank.BankService;
 import com.grpc.paymentservice.internal.service.bank.impl.XBankServiceImpl;
 import com.grpc.paymentservice.internal.service.bank.impl.YBankServiceImpl;
@@ -18,13 +20,12 @@ public class BankServiceFactory {
     }
 
     public PaymentResponse makePayment(PaymentServiceOuterClass.CreatePayment createPayment) {
-        BankService service =  getServiceBasedOnBank(createPayment.getBankId());
+        BankService service = getServiceBasedOnBank(createPayment.getBankId());
         return service.makePayment(createPayment);
     }
-    public void inquireOrder(InquireOrder inquireOrder){
-        BankService service =  getServiceBasedOnBank(inquireOrder.getBankId());
-        // TODO her banka için feignclient isteklerini hazırla
-        service.inquireOrder(inquireOrder);
+    public OrderResponse inquireOrder(InquireOrder inquireOrder){
+        BankService service = getServiceBasedOnBank(inquireOrder.getBankId());
+        return service.inquireOrder(inquireOrder);
     }
 
     private BankService getServiceBasedOnBank(String bankId) {
@@ -34,7 +35,7 @@ public class BankServiceFactory {
             return context.getBean(YBankServiceImpl.class);
         }
         //TODO Hatayı handle et
-        throw new IllegalArgumentException("Wrong Bank Id");
+        throw new NotFoundException("Bank with ID: " + bankId + " not found");
     }
 
 }

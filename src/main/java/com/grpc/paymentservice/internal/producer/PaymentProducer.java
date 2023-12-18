@@ -1,5 +1,6 @@
 package com.grpc.paymentservice.internal.producer;
 
+import com.grpc.paymentservice.external.dto.xbank.request.InquireOrder;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +13,7 @@ public class PaymentProducer {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    public void sendMessage(UUID message) {
+    public void sendMessage(InquireOrder message) {
         rabbitTemplate.convertAndSend("payment", message);
     }
 }
