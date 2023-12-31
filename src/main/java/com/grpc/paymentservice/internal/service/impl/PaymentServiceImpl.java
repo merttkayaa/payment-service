@@ -40,8 +40,6 @@ public class PaymentServiceImpl extends PaymentServiceGrpc.PaymentServiceImplBas
             producer.sendMessage(inquireOrder);
 
 
-
-
             // TODO scheduled ile endDate fonksiyonunu kullanarak her gün belli bir saatte tüm transactionları sorgula eğer hata varsa db tablosundaki başarılı kaydı güncelle
             PaymentServiceOuterClass.PaymentDto response = PaymentServiceOuterClass.PaymentDto.newBuilder()
                     .setResponse(paymentResponse.getResponse())

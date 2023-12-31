@@ -16,6 +16,7 @@ public class PaymentConsumer {
     private final PaymentDataService dataService;
     private final BankServiceFactory factory;
 
+
     public PaymentConsumer(PaymentDataService dataService, BankServiceFactory factory) {
         this.dataService = dataService;
         this.factory = factory;
