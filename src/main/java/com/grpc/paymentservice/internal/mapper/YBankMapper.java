@@ -7,7 +7,8 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper
 public abstract class YBankMapper {
-    YBankMapper INSTANCE = Mappers.getMapper(YBankMapper.class);
+//    YBankMapper INSTANCE = Mappers.getMapper(YBankMapper.class);
+    public static final YBankMapper INSTANCE= Mappers.getMapper(YBankMapper.class);
     public  PaymentResponse toPaymentResponse(YBankAuthResponse yBankAuthResponse){
         return PaymentResponse.builder()
                 .orderId(yBankAuthResponse.getOriginalOrderId())
