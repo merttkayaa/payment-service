@@ -43,4 +43,5 @@ feign:
       path-nonsecure: "/auth"
       threeD: "/threeDPay"
       inquireorder: "/inquirepayment"
-
+server:
+  port: 8085

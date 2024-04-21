@@ -9,8 +9,9 @@ import com.grpc.paymentservice.internal.service.factory.BankServiceFactory;
 import grpc.paymentservice.PaymentServiceGrpc;
 import grpc.paymentservice.PaymentServiceOuterClass;
 import io.grpc.stub.StreamObserver;
+import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-
+@Service
 public class PaymentServiceImpl extends PaymentServiceGrpc.PaymentServiceImplBase{
     private final BankServiceFactory factory;
     private final PaymentDataService dataService;
