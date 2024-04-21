@@ -9,7 +9,8 @@ import lombok.*;
 @Builder
 public class PaymentResponse {
     private String orderId;
-    private String response;
+    private String responseCode;
     private String message;
     private boolean isThreeD;
+
 }

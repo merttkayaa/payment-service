@@ -9,9 +9,10 @@ message CreatePayment {
   string cvv = 4;
   string expireDate = 5;
   string amount = 6;
-  string bankId = 7;
-  int64 userId = 8;
-  string paymentMethod = 9;
+  string orderId = 7;
+  string bankId = 8;
+  int64 userId = 9;
+  string paymentMethod = 10;
 }
 
 message PaymentDto {

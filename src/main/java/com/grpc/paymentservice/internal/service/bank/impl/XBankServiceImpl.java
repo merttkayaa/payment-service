@@ -2,6 +2,7 @@ package com.grpc.paymentservice.internal.service.bank.impl;
 
 import com.grpc.paymentservice.external.client.XBankServiceClient;
 import com.grpc.paymentservice.external.dto.xbank.OrderResponse;
+import com.grpc.paymentservice.external.dto.xbank.XBankAuthResponse;
 import com.grpc.paymentservice.external.dto.xbank.request.AuthRequest;
 import com.grpc.paymentservice.external.dto.xbank.request.InquireOrder;
 import com.grpc.paymentservice.internal.dto.PaymentResponse;

@@ -30,7 +30,7 @@ public class PaymentServiceImpl extends PaymentServiceGrpc.PaymentServiceImplBas
 
         PaymentResponse paymentResponse = factory.makePayment(request);
 
-        if("0000".equals(paymentResponse.getResponse())){
+        if("0000".equals(paymentResponse.getResponseCode())){
             dataService.updateSuccessfulPayment(paymentDto.getGuid(),paymentResponse.getOrderId());
             //TODO kuyruğa at  kuyrukta ilgili bankanın inquireOrder fonksşyonunu çağır. Olumsuz olursa dbdeki başarılı kaydı güncelle
             InquireOrder inquireOrder = InquireOrder.builder()
@@ -43,7 +43,7 @@ public class PaymentServiceImpl extends PaymentServiceGrpc.PaymentServiceImplBas
 
             // TODO scheduled ile endDate fonksiyonunu kullanarak her gün belli bir saatte tüm transactionları sorgula eğer hata varsa db tablosundaki başarılı kaydı güncelle
             PaymentServiceOuterClass.PaymentDto response = PaymentServiceOuterClass.PaymentDto.newBuilder()
-                    .setResponse(paymentResponse.getResponse())
+                    .setResponse(paymentResponse.getResponseCode())
                     .setMessage("Success")
                     .setOrderId(paymentResponse.getOrderId()) // TODO db id dön
                     .build();
@@ -51,7 +51,7 @@ public class PaymentServiceImpl extends PaymentServiceGrpc.PaymentServiceImplBas
             responseObserver.onCompleted();
         } else{
             PaymentServiceOuterClass.PaymentDto response = PaymentServiceOuterClass.PaymentDto.newBuilder()
-                    .setResponse(paymentResponse.getResponse())
+                    .setResponse(paymentResponse.getResponseCode())
                     .setMessage("Fail")
                     .setOrderId(paymentResponse.getOrderId())
                     .build();

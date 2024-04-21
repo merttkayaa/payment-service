@@ -12,7 +12,7 @@ public abstract class YBankMapper {
     public  PaymentResponse toPaymentResponse(YBankAuthResponse yBankAuthResponse){
         return PaymentResponse.builder()
                 .orderId(yBankAuthResponse.getOriginalOrderId())
-                .response(yBankAuthResponse.getResponseCode())
+                .responseCode(yBankAuthResponse.getResponseCode())
                 .message(yBankAuthResponse.getMessage())
                 .isThreeD(yBankAuthResponse.isThreeD())
                 .build();

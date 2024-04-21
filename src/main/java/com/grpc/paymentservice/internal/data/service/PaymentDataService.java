@@ -5,9 +5,11 @@ import com.grpc.paymentservice.internal.data.entity.Payment;
 import com.grpc.paymentservice.internal.data.mapper.PaymentMapper;
 import com.grpc.paymentservice.internal.data.repository.PaymentRepository;
 import com.grpc.paymentservice.internal.dto.PaymentDto;
+import com.grpc.paymentservice.internal.dto.enums.PaymentType;
 import grpc.paymentservice.PaymentServiceOuterClass;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Service

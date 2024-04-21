@@ -32,7 +32,7 @@ feign:
   client:
     xbank:
       name: "xbank"
-      url: "http://localhost:9001"
+      url: "http://localhost:8087/xbank"
       path:
         nonsecure: "/nonsecure"
         threeD: "/threeD"

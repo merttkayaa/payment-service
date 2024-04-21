@@ -21,6 +21,4 @@ public interface XBankServiceClient {
 
     @GetMapping("${feign.client.xbank.path.inquireorder}")
     OrderResponse inquireOrder(@RequestParam String inquireOrder);
-
-
 }

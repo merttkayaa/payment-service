@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -18,8 +19,11 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Payment {
     @Id
-    @GeneratedValue(generator = "payment_sequence", strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "payment_sequence", sequenceName = "payment_sequence", allocationSize = 1)
+//    @GeneratedValue(generator = "payment_sequence", strategy = GenerationType.SEQUENCE)
+//    @SequenceGenerator(name = "payment_sequence", sequenceName = "payment_sequence", allocationSize = 1)
+
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID guid;
     private String firstName;
     private String lastName;
@@ -28,6 +32,7 @@ public class Payment {
     private String expireDate;
     private BigDecimal amount;
     private String orderId;
+    @Column(name = "bankId", nullable = false)
     private String bankId;
     private Long userId;
     @Enumerated(EnumType.STRING)
